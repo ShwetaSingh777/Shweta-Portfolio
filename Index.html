@@ -156,10 +156,17 @@
         y: undefined
     };
 
-    window.addEventListener("mousemove", function(e) {
-        mouse.x = event.x;
-        mouse.y = event.y;
-    });
+    // Replace the window.addEventListener("mousemove", ...) block with the following code
+
+window.addEventListener("touchmove", function(e) {
+    e.preventDefault(); // Prevent scrolling on touch devices
+
+    if (e.touches.length > 0) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+    }
+});
+
 
     class Diamond {
         constructor(x, y, dx, dy, width) {
