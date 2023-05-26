@@ -1,0 +1,9 @@
+.smaller-width{
+    width: 25%;
+    float: left;
+}
+
+.larger-width{
+    width: 70%;
+    float: right;
+}
