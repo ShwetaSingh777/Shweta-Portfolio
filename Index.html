@@ -18,7 +18,7 @@
     <link rel="stylesheet" media="(min-width:501px) and (max-width:768px)" href="tablet.css">
     <link rel="stylesheet" media="(min-width:769px) and (max-width:1200px)" href="laptop.css">
     <link rel="stylesheet" media="(min-width:1201px)" href="wide.css">
-    <title>Shweta | Illustrator & Animator</title>
+    <title>Shweta</title>
 
     <style>
         .navbar{
@@ -156,16 +156,20 @@
         y: undefined
     };
 
-    // Replace the window.addEventListener("mousemove", ...) block with the following code
-
-window.addEventListener("touchmove", function(e) {
-    e.preventDefault(); // Prevent scrolling on touch devices
-
-    if (e.touches.length > 0) {
+    function handleMove(e) {
+    if (e.touches) {
+        // Touch event
         mouse.x = e.touches[0].clientX;
         mouse.y = e.touches[0].clientY;
+    } else {
+        // Mouse event
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
     }
-});
+}
+
+window.addEventListener("mousemove", handleMove);
+window.addEventListener("touchmove", handleMove, { passive: false });
 
 
     class Diamond {
